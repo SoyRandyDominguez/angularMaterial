@@ -1,0 +1,59 @@
+<div class="container-fluid">
+      <div class="jumbotron">
+          <h4 class="text-center">
+            To Do List
+          </h4>
+        </div>
+         
+                
+       <div class="row">
+         <div class="col-md-10">
+            <div class="input-group">
+                <mat-form-field style="width: 100%">
+                    <input matInput placeholder="Add To Do" #itemTitle>
+                    
+                </mat-form-field>  
+            
+            </div>
+          </div>
+          <div class="col-md-2">
+              <button mat-raised-button (click)="addItem(itemTitle)" style="height: 100%; width: 100%;" color="primary">
+                  <mat-icon matSuffix >add</mat-icon>ADD
+              </button>
+            </div>
+
+            
+       </div> 
+          
+        
+       <div class="row mt-3">
+         <div class="col-md-12">
+
+          <div *ngFor="let item of toDoListArray">
+            
+          
+           <div class="row mt-2">
+             <div class="col-md-10">
+                <mat-selection-list >
+                    <mat-list-option selected="{{ item.isChecked }}" (click)="toggleChecked(item.$key,item.isChecked)">
+                      {{item.Title}}
+                    </mat-list-option>
+                  </mat-selection-list>
+             </div>
+             <div class="col-md-2 ">
+               <button mat-raised-button 
+               style="height: 100%; width: 100%;" 
+               color="warn" 
+               (click)="deleteToDo(item.$key)"
+               ><mat-icon>delete</mat-icon></button>
+             </div>
+           </div>
+
+          </div>
+
+         </div> 
+       </div>
+        
+       
+  
+</div>
