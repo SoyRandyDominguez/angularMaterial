@@ -11,7 +11,9 @@ export const environment = {
     projectId: "angular-fs-4b9b4",
     storageBucket: "angular-fs-4b9b4.appspot.com",
     messagingSenderId: "755820135194"
-  }
+  },
+  googleMapsKey: 'AIzaSyBAsUkQ2fUje1RxkPbmDbFsragTm-CTRAI',
+  googleMapsKey2: 'AIzaSyBs_r--RBX4KDK-7MkZI-PY7gXJn8BBh-U'
 };
 
 /*

@@ -8,26 +8,33 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 //modules
 import { MaterialModule } from './material.module';
 import { UiModule } from './ui/ui.module';
-//componenes
-import { HomeComponent } from './components/home/home.component';
-import { MapsComponent } from './components/maps/maps.component';
-import { TodoComponent } from './components/todo/todo.component';
 
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 
 
 import { environment } from './../environments/environment';
-
+import { AgmCoreModule } from '@agm/core';
 //services
 import { TodoService } from './services/todo.service';
+import { GeoServiceService } from './services/geo-service.service';
+
+
+//componentes
+import { HomeComponent } from './components/home/home.component';
+import { MapsComponent } from './components/maps/maps.component';
+import { TodoComponent } from './components/todo/todo.component';
+import { GoogleMapComponent } from './components/maps/google-map/google-map.component';
+
+
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     MapsComponent,
-    TodoComponent
+    TodoComponent,
+    GoogleMapComponent
   ],
   imports: [
     BrowserModule,
@@ -36,9 +43,12 @@ import { TodoService } from './services/todo.service';
     MaterialModule,
     UiModule,
     AngularFireModule.initializeApp(environment.firebase),
-    AngularFireDatabaseModule
+    AngularFireDatabaseModule,
+    AgmCoreModule.forRoot( {
+      apiKey: environment.googleMapsKey
+    })
   ],
-  providers: [TodoService],
+  providers: [TodoService, GeoServiceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
